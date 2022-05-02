@@ -1,0 +1,21 @@
+from pytube import YouTube
+
+
+link = input('Copie aqui o link do video do Youtube que deseja fazer o download...')
+yt = YouTube(link)
+
+
+print(yt.title)
+print(yt.thumbnail_url)
+
+print('Escolha um dos ITAG(s) da lista abaixo:')
+
+streams_list = yt.streams
+for i in streams_list:
+    print(i)
+
+itag_escolhido = input('digite aqui....')
+
+stream = yt.streams.get_by_itag(itag_escolhido)
+stream.download()
+
